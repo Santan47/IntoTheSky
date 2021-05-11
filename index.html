@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>ProjectTitle</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -11,15 +12,53 @@
 
   <link rel="stylesheet" type="text/css" href="/Custom Css/style.css">
 </head>
+
 <body>
-<div class="main">
+  <div class="main">
     <div class="view">
-      hello
+      <div class="header hide">
+        NASA Activities
+      </div>
+      <div class="imageClass">
+        <div class="header">
+          NASA Activities
+        </div>
+        <img src="/assets/intoTheSky.jpg" height="350px" width="100%" alt="Italian Trulli">
+        <div class="text-block">
+          <h4>Space Informations!</h4>
+          <p>The objective of this site is to make NASA data, including imagery, eminently visible to all. Data is
+            fetched direct from NASA API's</p>
+        </div>
+      </div>
+      <div class="Details">
+        <div class="cols">
+          <div class="infoTitle">
+            APOD
+          </div>
+          <div class="infosubTitle">
+            Astronomy Picture of the Day
+          </div>
+          <div class="topicInfo">
+            One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one
+            of the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber
+            video. This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for
+            other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from
+            the image explanation are returned. These keywords could be used as auto-generated hashtags for twitter or
+            instagram feeds; but generally help with discoverability of relevant imagery.
+            The full documentation for this API can be found in the APOD API Github repository.
+          </div>
+          <div>
+            <img src="https://apod.nasa.gov/apod/image/2105/UluruOrion_Liu_5000.jpg" height="350px" width="100%" alt="Italian Trulli">
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+
+    <footer class="footer">Created by Santan kr sharma.</footer>
+  </div>
 
 
-<!-- <script type="text/x-handlebars-template" id="liveChallengesTemplate">
+  <!-- <script type="text/x-handlebars-template" id="liveChallengesTemplate">
   <ul class="list inset">
       {{#each (limit this 5)}}
       <li class="list-item goToMyChallenges" data-challengeId="{{data.sheet_row_id}}">
@@ -27,7 +66,7 @@
               <span
                   class="w-40 r-2x _600 text-lg accent"
                   style="{{getStyle data.rewards_1564470493902}}"><img
-                      src="{{getIcon data.rewards_1564470493902}}" style="height: 22px;" /></span></a>
+                      src="{{getIcon data.rewards_1 564470493902}}" style="height: 22px;" /></span></a>
           <div class="list-body">
               <h5 class="col-sm-12 titleSize" style="padding: 0px;">
                   <a>{{data.title_1564470459807}}</a></h5>
@@ -36,14 +75,15 @@
       {{/each}}
   </ul>
 </script> -->
-<script src="/js/jquery-3.2.1.slim.min.js"></script>
-<script src="/js/popper.min.js"></script>
-<script src="/js/handlerbars.js"></script>
-<script src="/js/Chart.js"></script>
-<!-- jQuery library -->
-<script src="/js/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="/Custom Js/script.js"></script>
+  <script src="/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/handlerbars.js"></script>
+  <script src="/js/Chart.js"></script>
+  <!-- jQuery library -->
+  <script src="/js/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/Custom Js/script.js"></script>
 </body>
+
 </html>
