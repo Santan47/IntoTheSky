@@ -1,18 +1,3 @@
-// var Config = {
-//   submissionURL: "https://workflow.dronahq.com/submission",
-//   recordURL:
-//     "https://realtimedb.dronahq.com/couchdbs/cdb1952/documents/record_schema",
-//   authToken: "56608519-b204-11e9-ac71-0a3cc2b8a100",
-//   newAuthToken: "a0522413db4c59bbc34ac84ea8d8234b29fd8f3af549ac250c",
-//   nextNewAuth: "35a35ad1ccd15ef778cc71542b8f573ab6b01bed4c2389bf38",
-//   imgUpload: "https://plugin.api.dronahq.com/api/Imageupload",
-//   tokenKey: "35a35ad1ccd15ef778cc71542b8f573ab6b01bed4c2389bf38",
-//   userURL:
-//     "https://realtimedb.dronahq.com/couchdbs/cdb1952/documents/internal_schema",
-//   userName: localStorage.getItem("uName"),
-//   userEmail: localStorage.getItem("uEmail"),
-//   userRole: localStorage.getItem("uRole"),
-// };
 
 // var headers = {
 //   "Content-Type": "application/json",
@@ -214,75 +199,34 @@ function wordWarApp() {
       });
   };
 
+
+
+  function GetNasaApiData(url) {
+    return new Promise(function(resolve,reject){
+      var method = 'GET';
+      fnAjaxRequest(url, method, {},"", resolve, reject);
+    })
+}
+
   (function () {
       //  change nav tab
-      $('body').off('click', '.navigationTab').on('click', '.navigationTab', function (e) {
+      $('body').off('click', '.headerbtn').on('click', '.headerbtn', function (e) {
           e.preventDefault();
           e.stopPropagation();
-          $(".navigationTab").removeClass("active");
+          $(".headerbtn").removeClass("active");
           $(this).addClass("active");
-          if ($(this).attr("data-id") == "Home") {
-              $("#postSomethingTemplet").addClass("hide");
-              $("#userFeedsTemplet").removeClass("hide");
-          }
-          
-          if(this.getAttribute("data-id") == "logout"){
-              window.location = "http://127.0.0.1:8000/" + "logout";
-          }
-          else if(this.getAttribute("data-id") == "login"){
-              window.location = "http://127.0.0.1:8000/" + "login";
-          }
-          // else if(this.getAttribute("data-id") == "register"){
-          //     window.location = location.href + "login";
-          // }
-
-
+          debugger
+          GetNasaApiData($(this).attr("data-url")).then((data) => {
+            alert("success");
+            console.log(data);
+          }).catch((error) =>{
+            alert("something whent wrong");
+          });
       });
-
-      // change selected card
-      $('body').off('click', '.card').on('click', '.card', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          $(".card").removeClass("active");
-          $(this).addClass("active");
-          let cardId = parseInt($(".active")[1].getAttribute("data-id"));
-          // GetContentData(cardId)
-          window.location = "http://127.0.0.1:8000/content/" + cardId;
-      });
-
-      // write somthing click
-      $('body').off('click', '.rightTopBody .postSomething').on('click', '.rightTopBody .postSomething', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          $("#userFeedsTemplet").addClass("hide");
-          $("#postSomethingTemplet").removeClass("hide");
-      });
-
-      // write upload content click
-      $('body').off('click', '#uploadContent').on('click', '#uploadContent', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          uploadContentData("hello","my data is here");
-      });
-
   })();
 
 
-  function GetContentData(contentId) {
-      var url = 'http://127.0.0.1:8000/getActiveData/?s_no=1';
-      var method = 'GET';
-      var payload = {
-          "s_no" : contentId
-      }
-      var fnSuccess = function (data) {
-          console.log("success",data);
-      }
-      var fnError = function (err) {
-          console.error('unexpected error', err);
-      }
-
-      fnAjaxRequest(url, method, {}, payload, fnSuccess, fnError);
-  }
+  
 
   return {
       init: function () {
