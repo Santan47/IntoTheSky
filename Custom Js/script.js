@@ -4,189 +4,72 @@
 //   Authorization: "Bearer " + Config.authToken,
 // };
 
-// var fnHandleBars = function (template, data) {
-//   template = "#" + template;
-//   var Source = $(template).html();
-//   var fnTemplate = Handlebars.compile(Source);
-//   return fnTemplate(data);
-// };
-
-// var fnAjaxRequest = function (
-//   ajaxURL,
-//   ajaxReqMethod,
-//   ajaxReqHeader,
-//   ajaxReqData,
-//   onSucess,
-//   onError
-// ) {
-//   $.ajax({
-//     type: ajaxReqMethod,
-//     url: ajaxURL,
-//     headers: ajaxReqHeader,
-//     data: ajaxReqData,
-//     success: onSucess,
-//     error: onError,
-//   });
-// };
-
-// function getLiveChallenges() {
-//   var obj = {
-//     channel_id: "1952",
-//     env: "prod",
-//     table_id: "challenge_master_195215935_15644693509290",
-//     table_name: "ChallengeMaster",
-//     sort: ["row_seq"],
-//     fields: [
-//       "data.title_1564470459807",
-//       "data.description_1564470477939",
-//       "data.rewards_1564470493902",
-//       "data.pointsprize_1564470518709",
-//       "data.launch_date_1564470536666",
-//       "data.expertlist_1564553522952",
-//       "data.verticallist_1564553538937",
-//       "data.cash_prize_1564554871714.value",
-//       "data.cash_prize_1564554871714.unit",
-//       "data.other_reward_1564554894824",
-//       "data.end_date_1564555041269",
-//       "data.is_active_1564555207467",
-//       "data.challenge_status_1564570347858",
-//       "data.sheet_row_id",
-//       "data.challenge_image_1571305687863",
-//     ],
-//     data_selector: {
-//       $and: [
-//         {
-//           "data.challenge_status_1564570347858": {
-//             $eq: "Approved",
-//           },
-//         },
-//         {
-//           "data.ChallengeStartDateTime_1576833436097": {
-//             $lte: new Date().getTime(),
-//           },
-//         },
-//         {
-//           "data.ChallengeEndDateTime_1576833451361": {
-//             $gte: new Date().getTime(),
-//           },
-//         },
-//         {
-//           "data.verticallist_1564553538937": {
-//             $in: [localStorage.getItem("uVertical")],
-//           },
-//         },
-//       ],
-//     },
-//   };
-
-//   var fnSuccess = function (resp) {
-//     if (resp.data.length == 0) {
-//       $("#nodatalive").removeClass("hide");
-//       $("#liveChallenges").addClass("hide");
-//     } else {
-//       $("#nodatalive").addClass("hide");
-//       $("#liveChallenges").removeClass("hide");
-//       var liveChallengeHtml = fnHandleBars(
-//         "liveChallengesTemplate",
-//         resp.data.reverse()
-//       );
-//       $("#liveChallenges").html(liveChallengeHtml);
-//       $("#currentChallengeCount").html(resp.data.length);
-//       console.log("response", resp.data);
-//     }
-//   };
-
-//   var fnError = function (err) {
-//     console.log("Some error occurred");
-//   };
-
-//   fnAjaxRequest(
-//     Config.recordURL,
-//     "POST",
-//     headers,
-//     JSON.stringify(obj),
-//     fnSuccess,
-//     fnError
-//   );
-// }
-
-// function ideasShortListed() {
-//   var obj = {
-//     channel_id: "1952",
-//     env: "prod",
-//     table_id: "idea_master_195215935_15647414449861",
-//     table_name: "IdeaMaster",
-//     sort: ["row_seq"],
-//     fields: [
-//       "data.sheet_row_id",
-//       "data.title_1564741592211",
-//       "data.description_1564741609064",
-//       "data.attachment_1564741697685",
-//       "data.Attachment_Name_1578911935713",
-//       "data.type_1564741769680",
-//       "data.challenge_unique_id_1564741795325",
-//       "data.Evaluation_status_1565681360482",
-//       "data.createdDate_1568728161813",
-//       "data.createdTime_1568728167166",
-//       "data.likesCount_1568976143088",
-//       "data.dislikeCount_1568976148019",
-//       "data.commentCount_1568976153187",
-//       "data.ShortlistedStatus_1569045037996",
-//       "data.IdeaSubmittedBy_1569225296900",
-//       "data.expertlist_1572875392350",
-//       "data.smeEvaluationPoints_1573477928934",
-//       "data.ChallengeTitle_1575956925650",
-//       "data.ChallengeCreatedBy_1576067258392",
-//       "data.EvaluationSubmittedBy_1576216154192",
-//       "data.SMEStartDate_1577103031268",
-//       "data.SMEEndDate_1577103041718",
-//       "data.PromoterStartDate_1577103084260",
-//       "data.PromoterEndDate_1577103094870",
-//       "data.VerticalList_1582113237931",
-//     ],
-//     data_selector: {
-//       "data.ShortlistedStatus_1569045037996": {
-//         $eq: "Winner",
-//       },
-//     },
-//   };
-
-//   var fnSuccess = function (resp) {
-//     $("#winnerIdeaCount").html(resp.data.length);
-
-//     var WinnersListHTML = fnHandleBars(
-//       "winnersListTemplate",
-//       resp.data.reverse()
-//     );
-//     $("#winnersList").html(WinnersListHTML);
-//   };
-
-//   var fnError = function (err) {
-//     console.log("Some error occurred");
-//   };
-
-//   fnAjaxRequest(
-//     Config.recordURL,
-//     "POST",
-//     headers,
-//     JSON.stringify(obj),
-//     fnSuccess,
-//     fnError
-//   );
-// }
-// $(document).ready(function () {
-//   getLiveChallenges();
-//   ideasShortListed();
-// });
 
 
 $(document).ready(function () {
-  wordWarAppModel = new wordWarApp();
-  wordWarAppModel.init();
+  intoTheSkyAppModel = new intoTheSkyApp();
+  intoTheSkyAppModel.init();
+  var Expand = (function() {
+    var tile = $('.strips__strip');
+    var tileLink = $('.strips__strip > .strip__content');
+    var tileText = tileLink.find('.strip__inner-text');
+    var stripClose = $('.strip__close');
+    
+    var expanded  = false;
+  
+    var open = function() {
+        
+      var tile = $(this).parent();
+  
+        if (!expanded) {
+          tile.addClass('strips__strip--expanded');
+          // add delay to inner text
+          tileText.css('transition', 'all .5s .3s cubic-bezier(0.23, 1, 0.32, 1)');
+          stripClose.addClass('strip__close--show');
+          stripClose.css('transition', 'all .6s 1s cubic-bezier(0.23, 1, 0.32, 1)');
+          expanded = true;
+        } 
+      };
+    
+    var close = function() {
+      if (expanded) {
+        tile.removeClass('strips__strip--expanded');
+        // remove delay from inner text
+        tileText.css('transition', 'all 0.15s 0 cubic-bezier(0.23, 1, 0.32, 1)');
+        stripClose.removeClass('strip__close--show');
+        stripClose.css('transition', 'all 0.2s 0s cubic-bezier(0.23, 1, 0.32, 1)')
+        expanded = false;
+      }
+    }
+  
+      var bindActions = function() {
+        tileLink.on('click', open);
+        stripClose.on('click', close);
+      };
+  
+      var initAction = function() {
+        bindActions();
+      };
+  
+      return {
+        initAction: initAction
+      };
+  
+  }());
+  Expand.init();
 });
 
 
-function wordWarApp() {
+function intoTheSkyApp() {
+
+  var apiKey = "l6mLDfDsPCfqS75dAf6I5fnNm2fI0EbGeOtGB9dq";
+
+  var fnHandleBars = function (template, data) {
+    template = "#" + template;
+    var Source = $(template).html();
+    var fnTemplate = Handlebars.compile(Source);
+    return fnTemplate(data);
+  };
 
   var fnAjaxRequest = function (ajaxURL, ajaxReqMethod, ajaxReqHeader, ajaxReqData, onSucess, onError) {
       $.ajax({
@@ -206,21 +89,76 @@ function wordWarApp() {
       var method = 'GET';
       fnAjaxRequest(url, method, {},"", resolve, reject);
     })
-}
+  }
+
 
   (function () {
+      // for first tab call function APOD
+      GetNasaApiData($(".headerbtn.active").attr("data-url")).then((data) => {
+        // alert("success");
+        console.log(data);
+        data["sub_title"] = "Astronomy Picture of the Day";
+        data = {data};
+        var topicInfoHTML = fnHandleBars('topicInfoTemplate', data);
+        $("#topicDetails").html(topicInfoHTML);
+      }).catch((error) =>{
+        alert("something whent wrong");
+      });
+
       //  change nav tab
       $('body').off('click', '.headerbtn').on('click', '.headerbtn', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          $(".headerbtn").removeClass("active");
-          $(this).addClass("active");
-          debugger
-          GetNasaApiData($(this).attr("data-url")).then((data) => {
-            alert("success");
+        e.preventDefault();
+        e.stopPropagation();
+        $(".headerbtn").removeClass("active");
+        $(this).addClass("active");
+        let url = $(this).attr("data-url");
+        
+        if($(".active").attr("id") === "apod"){
+          // APOD data AJAX call
+          GetNasaApiData(url).then((data) => {
             console.log(data);
+            data = {data};
+            var topicInfoHTML = fnHandleBars('topicInfoTemplate', data);
+            $("#topicDetails").html(topicInfoHTML);
           }).catch((error) =>{
             alert("something whent wrong");
+          });
+        }
+        else if($(this).attr("id") === "asteroidNeo"){
+          //var filterHTML = fnHandleBars('filterTemplate', {});
+          //$("#topicDetails").html(filterHTML);
+          var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', {});
+          $("#topicDetails").html(topicInfoHTML);
+          
+        }
+
+      });
+
+      $('body').off('click', '.btnSub').on('click', '.btnSub', function (e) {
+        let url = $("#asteroidNeo").attr("data-url");
+        //asteroidNeo data AJAX call
+        url = url + "feed?start_date=" + $("#start").val() + "&end_date="+ $("#end").val() + "&api_key=" +apiKey;
+        // /feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY
+        // $(".twoDivflex").removeClass("hide");
+        //console.log($(this).attr("id"));
+        GetNasaApiData(url).then((data) => {
+          console.log(data);
+          data = {data};
+          var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', data);
+          $("#topicDetails").html(topicInfoHTML);
+        }).catch((error) =>{
+          alert("something whent wrong");
+        });
+      });
+
+      $('body').off('click', '.expand-collapse').on('click', '.expand-collapse', function (e) {
+          $('.expand-collapse h3').each(function() {
+            var tis = $(this), state = false, answer = tis.next('div').slideUp();
+            tis.click(function() {
+              state = !state;
+              answer.slideToggle(state);
+              tis.toggleClass('active',state);
+            });
           });
       });
   })();

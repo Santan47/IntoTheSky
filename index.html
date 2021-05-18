@@ -18,24 +18,24 @@
     <div class="view">
       <div class="imageClass">
         <div class="header">
-          <div class="headerbtn active">InSight</div>
-          <div class="headerbtn">Mars Rover</div>
-          <div class="headerbtn">TechTransfer</div>
-          <div class="headerbtn">Satellite Situation Center</div>
-          <div class="headerbtn">SSD/CNEOS</div>
-          <div class="headerbtn">Techport</div>
-          <div class="headerbtn">TLE API</div>
-          <div class="headerbtn">Vesta/Moon/Mars Trek</div>
+          <div id="apod" class="headerbtn active" data-url = "https://api.nasa.gov/planetary/apod?api_key=l6mLDfDsPCfqS75dAf6I5fnNm2fI0EbGeOtGB9dq">APOD</div>
+          <div id="marsRover" class="headerbtn">Mars Rover</div>
+          <div id="techTransfer" class="headerbtn">TechTransfer</div>
+          <div id="satelliteCenter" class="headerbtn">Satellite Situation Center</div>
+          <div id="ssd" class="headerbtn">SSD/CNEOS</div>
+          <div id="techport" class="headerbtn">Techport</div>
+          <div id="tleApi" class="headerbtn">TLE API</div>
+          <div id="vesta" class="headerbtn">Vesta/Moon/Mars Trek</div>
         </div>
         <div class="header1">
-          <div class="headerbtn" data-url = "https://api.nasa.gov/planetary/apod?api_key=l6mLDfDsPCfqS75dAf6I5fnNm2fI0EbGeOtGB9dq">APOD</div>
-          <div class="headerbtn">Asteroids - NeoWs</div>
-          <div class="headerbtn">DONKI</div>
-          <div class="headerbtn">Earth</div>
-          <div class="headerbtn">EONET</div>
-          <div class="headerbtn">EPIC</div>
-          <div class="headerbtn">Exoplanet</div>
-          <div class="headerbtn">GeneLab</div>
+          <div id="insight" class="headerbtn">InSight</div>
+          <div id="asteroidNeo" class="headerbtn" data-url = "https://api.nasa.gov/neo/rest/v1/">Asteroids - NeoWs</div>
+          <div id="donki" class="headerbtn">DONKI</div>
+          <div id="earth" class="headerbtn">Earth</div>
+          <div id="eonet" class="headerbtn">EONET</div>
+          <div id="epic" class="headerbtn">EPIC</div>
+          <div id="exoplanet" class="headerbtn">Exoplanet</div>
+          <div id="genelab" class="headerbtn">GeneLab</div>
         </div>
         <img src="/assets/illustration-planet-space-sky-stars-Earth-71688-wallhere.com.jpg" height="350px" width="100%" alt="Italian Trulli">
         <div class="text-block">
@@ -44,31 +44,14 @@
             fetched direct from NASA API's</h6></div>
         </div>
       </div>
-      <div class="Details">
-        <div class="cols">
-          <div class="infoTitle">
-            APOD
-          </div>
-          <div class="infosubTitle">
-            Astronomy Picture of the Day
-          </div>
-          <div class="topicInfo">
-            One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one
-            of the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber
-            video. This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for
-            other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from
-            the image explanation are returned. These keywords could be used as auto-generated hashtags for twitter or
-            instagram feeds; but generally help with discoverability of relevant imagery.
-            The full documentation for this API can be found in the APOD API Github repository.
-          </div>
-          <div>
-            <img src="https://apod.nasa.gov/apod/image/2105/UluruOrion_Liu_5000.jpg" height="350px" width="100%" alt="Italian Trulli">
-          </div>
-        </div>
+      
+      <div id="topicDetails" class="Details">
+        <!-- handlebar data fetch -->
+        
       </div>
     </div>
 
-    <footer class="footer">Created by Santan kr sharma.</footer>
+    <footer class="footer hide">Created by Santan kr sharma.</footer>
   </div>
 
 
@@ -89,6 +72,125 @@
       {{/each}}
   </ul>
 </script> -->
+
+<script type="text/x-handlebars-template" id="topicInfoTemplate">
+  {{#each this}}
+  <div class="cols">
+    <div class="infoTitle">
+      {{title}}
+    </div>
+    <div class="infosubTitle">
+      {{sub_title}}
+    </div>
+    <div class="topicInfo">
+      {{explanation}}  
+    </div>
+    <div>
+      <img src="{{hdurl}}" height="350px" width="100%">
+    </div>
+  </div>
+  {{/each}}
+</script>
+
+<script type="text/x-handlebars-template" id="filterTemplate">
+  <div id="filters" class="filtersData">
+    <div class="twoDivflex">
+      <div class="childtwoDivFlex">
+        <div>Start Date</div>
+        <input id="start" class="pickDate" type="date">
+      </div>
+      <div class="childtwoDivFlex">
+        <div>End Date</div>
+        <input id="end" class="pickDate" type="date">
+      </div>
+    </div>
+    <div class="flexCenter">
+      <div class="btnSub">SUBMIT</div>
+    </div>
+  </div>
+</script>
+
+<!-- astroid neows details -->
+<!-- <script type="text/x-handlebars-template" id="asteroidNeowTemplate">
+  <div class="expand-collapse">
+    <h3>What are color codes?</h3>
+    <div>
+      <p>Color codes are ways of representing the colors we see everyday in a format that a computer can interpret and display. Commonly used in websites and other software applications, there are a variety of formats, including Hex color codes, RGB and HSL values, and HTML color names, amongst others. </p>
+    </div>
+    <h3>What is material design?</h3>
+    <div>
+      <p>Material design is a visual language and design system developed by Google with an almost flat style and vibrant color schemes. Material design is a visual language and design system developed by Google with an almost flat style and vibrant color schemes. Material design is a visual language and design system developed by Google with an almost flat style and vibrant color schemes.</p>
+    </div>
+    </div>
+</script> -->
+
+<script type="text/x-handlebars-template" id="asteroidNeowTemplate">
+  <section class="strips">
+    <article class="strips__strip">
+      <div class="strip__content">
+        <h1 class="strip__title" data-name="Lorem">Awesome</h1>
+        <div class="strip__inner-text">
+          <h2>Ettrics</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
+          <p>
+            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
+          </p>
+        </div>
+        
+      </div>
+    </article>
+    <article class="strips__strip">
+      <div class="strip__content">
+        <h1 class="strip__title" data-name="Ipsum">Words</h1>
+        <div class="strip__inner-text">
+          <h2>Ettrics</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
+          <p>
+            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
+          </p>
+        </div>
+      </div>
+    </article>
+    <article class="strips__strip">
+      <div class="strip__content">
+        <h1 class="strip__title" data-name="Dolor">Go</h1>
+        <div class="strip__inner-text">
+          <h2>Ettrics</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
+          <p>
+            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
+          </p>
+        </div>
+      </div>
+    </article>
+    <article class="strips__strip">
+      <div class="strip__content">
+        <h1 class="strip__title" data-name="Sit">Inside</h1>
+        <div class="strip__inner-text">
+          <h2>Ettrics</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
+          <p>
+            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
+          </p>
+        </div>
+      </div>
+    </article>
+    <article class="strips__strip">
+      <div class="strip__content">
+        <h1 class="strip__title" data-name="Amet">Here</h1>
+        <div class="strip__inner-text">
+          <h2>Ettrics</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
+          <p>
+            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
+          </p>
+        </div>
+      </div>
+    </article>
+    <i class="fa fa-close strip__close"></i>
+  </section>
+</script>
+
   <script src="/js/jquery-3.2.1.slim.min.js"></script>
   <script src="/js/popper.min.js"></script>
   <script src="/js/handlerbars.js"></script>
