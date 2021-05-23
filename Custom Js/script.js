@@ -9,54 +9,6 @@
 $(document).ready(function () {
   intoTheSkyAppModel = new intoTheSkyApp();
   intoTheSkyAppModel.init();
-  var Expand = (function() {
-    var tile = $('.strips__strip');
-    var tileLink = $('.strips__strip > .strip__content');
-    var tileText = tileLink.find('.strip__inner-text');
-    var stripClose = $('.strip__close');
-    
-    var expanded  = false;
-  
-    var open = function() {
-        
-      var tile = $(this).parent();
-  
-        if (!expanded) {
-          tile.addClass('strips__strip--expanded');
-          // add delay to inner text
-          tileText.css('transition', 'all .5s .3s cubic-bezier(0.23, 1, 0.32, 1)');
-          stripClose.addClass('strip__close--show');
-          stripClose.css('transition', 'all .6s 1s cubic-bezier(0.23, 1, 0.32, 1)');
-          expanded = true;
-        } 
-      };
-    
-    var close = function() {
-      if (expanded) {
-        tile.removeClass('strips__strip--expanded');
-        // remove delay from inner text
-        tileText.css('transition', 'all 0.15s 0 cubic-bezier(0.23, 1, 0.32, 1)');
-        stripClose.removeClass('strip__close--show');
-        stripClose.css('transition', 'all 0.2s 0s cubic-bezier(0.23, 1, 0.32, 1)')
-        expanded = false;
-      }
-    }
-  
-      var bindActions = function() {
-        tileLink.on('click', open);
-        stripClose.on('click', close);
-      };
-  
-      var initAction = function() {
-        bindActions();
-      };
-  
-      return {
-        initAction: initAction
-      };
-  
-  }());
-  Expand.init();
 });
 
 
@@ -82,6 +34,19 @@ function intoTheSkyApp() {
       });
   };
 
+//return an array of values that match on a certain key
+function getValues(obj, key) {
+  var objects = [];
+  for (var i in obj) {
+      if (!obj.hasOwnProperty(i)) continue;
+      if (typeof obj[i] == 'object') {
+          objects = objects.concat(getValues(obj[i], key));
+      } else if (i == key) {
+          objects.push(obj[i]);
+      }
+  }
+  return objects;
+}
 
 
   function GetNasaApiData(url) {
@@ -118,6 +83,7 @@ function intoTheSkyApp() {
           GetNasaApiData(url).then((data) => {
             console.log(data);
             data = {data};
+           
             var topicInfoHTML = fnHandleBars('topicInfoTemplate', data);
             $("#topicDetails").html(topicInfoHTML);
           }).catch((error) =>{
@@ -125,10 +91,10 @@ function intoTheSkyApp() {
           });
         }
         else if($(this).attr("id") === "asteroidNeo"){
-          //var filterHTML = fnHandleBars('filterTemplate', {});
-          //$("#topicDetails").html(filterHTML);
-          var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', {});
-          $("#topicDetails").html(topicInfoHTML);
+          var filterHTML = fnHandleBars('filterTemplate', {});
+          $("#topicDetails").html(filterHTML);
+          // var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', {});
+          // $("#topicDetails").html(topicInfoHTML);
           
         }
 
@@ -144,23 +110,24 @@ function intoTheSkyApp() {
         GetNasaApiData(url).then((data) => {
           console.log(data);
           data = {data};
-          var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', data);
+          jblKeysArray = getValues(data,"nasa_jpl_url");
+          nameKeysArray = getValues(data,"name");
+          obj = [];
+          for(i = 0 ;i < jblKeysArray.length; i++){
+            newItem = {
+              "name": nameKeysArray[i],
+              "jblUrl": jblKeysArray[i]
+            }
+            obj.push(newItem);
+          }
+          debugger
+          var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', obj);
           $("#topicDetails").html(topicInfoHTML);
         }).catch((error) =>{
           alert("something whent wrong");
         });
       });
 
-      $('body').off('click', '.expand-collapse').on('click', '.expand-collapse', function (e) {
-          $('.expand-collapse h3').each(function() {
-            var tis = $(this), state = false, answer = tis.next('div').slideUp();
-            tis.click(function() {
-              state = !state;
-              answer.slideToggle(state);
-              tis.toggleClass('active',state);
-            });
-          });
-      });
   })();
 
 

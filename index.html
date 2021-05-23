@@ -111,85 +111,21 @@
 </script>
 
 <!-- astroid neows details -->
-<!-- <script type="text/x-handlebars-template" id="asteroidNeowTemplate">
-  <div class="expand-collapse">
-    <h3>What are color codes?</h3>
-    <div>
-      <p>Color codes are ways of representing the colors we see everyday in a format that a computer can interpret and display. Commonly used in websites and other software applications, there are a variety of formats, including Hex color codes, RGB and HSL values, and HTML color names, amongst others. </p>
-    </div>
-    <h3>What is material design?</h3>
-    <div>
-      <p>Material design is a visual language and design system developed by Google with an almost flat style and vibrant color schemes. Material design is a visual language and design system developed by Google with an almost flat style and vibrant color schemes. Material design is a visual language and design system developed by Google with an almost flat style and vibrant color schemes.</p>
-    </div>
-    </div>
-</script> -->
-
 <script type="text/x-handlebars-template" id="asteroidNeowTemplate">
-  <section class="strips">
-    <article class="strips__strip">
-      <div class="strip__content">
-        <h1 class="strip__title" data-name="Lorem">Awesome</h1>
-        <div class="strip__inner-text">
-          <h2>Ettrics</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-          <p>
-            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
-          </p>
-        </div>
-        
+  <div class="dataset">
+  {{#each this}}
+    <div class="detailsPage">
+      <div class="itemTitle">
+        {{name}}
       </div>
-    </article>
-    <article class="strips__strip">
-      <div class="strip__content">
-        <h1 class="strip__title" data-name="Ipsum">Words</h1>
-        <div class="strip__inner-text">
-          <h2>Ettrics</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-          <p>
-            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
-          </p>
-        </div>
+      <div class="itemDetails">
+        <a href="{{jblUrl}}" target="_blank">Click here to know ablut the asteroid {{name}}</a>
       </div>
-    </article>
-    <article class="strips__strip">
-      <div class="strip__content">
-        <h1 class="strip__title" data-name="Dolor">Go</h1>
-        <div class="strip__inner-text">
-          <h2>Ettrics</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-          <p>
-            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
-          </p>
-        </div>
-      </div>
-    </article>
-    <article class="strips__strip">
-      <div class="strip__content">
-        <h1 class="strip__title" data-name="Sit">Inside</h1>
-        <div class="strip__inner-text">
-          <h2>Ettrics</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-          <p>
-            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
-          </p>
-        </div>
-      </div>
-    </article>
-    <article class="strips__strip">
-      <div class="strip__content">
-        <h1 class="strip__title" data-name="Amet">Here</h1>
-        <div class="strip__inner-text">
-          <h2>Ettrics</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-          <p>
-            <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
-          </p>
-        </div>
-      </div>
-    </article>
-    <i class="fa fa-close strip__close"></i>
-  </section>
+    </div>
+  {{/each}}
+</div>
 </script>
+
 
   <script src="/js/jquery-3.2.1.slim.min.js"></script>
   <script src="/js/popper.min.js"></script>
