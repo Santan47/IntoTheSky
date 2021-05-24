@@ -97,35 +97,66 @@ function getValues(obj, key) {
           // $("#topicDetails").html(topicInfoHTML);
           
         }
+        else if($(this).attr("id") === "donki"){
+          var filterHTML = fnHandleBars('filterTemplate', {});
+          $("#topicDetails").html(filterHTML);
+          // var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', {});
+          // $("#topicDetails").html(topicInfoHTML);
+          
+        }
 
       });
 
       $('body').off('click', '.btnSub').on('click', '.btnSub', function (e) {
-        let url = $("#asteroidNeo").attr("data-url");
-        //asteroidNeo data AJAX call
-        url = url + "feed?start_date=" + $("#start").val() + "&end_date="+ $("#end").val() + "&api_key=" +apiKey;
-        // /feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY
-        // $(".twoDivflex").removeClass("hide");
-        //console.log($(this).attr("id"));
-        GetNasaApiData(url).then((data) => {
-          console.log(data);
-          data = {data};
-          jblKeysArray = getValues(data,"nasa_jpl_url");
-          nameKeysArray = getValues(data,"name");
-          obj = [];
-          for(i = 0 ;i < jblKeysArray.length; i++){
-            newItem = {
-              "name": nameKeysArray[i],
-              "jblUrl": jblKeysArray[i]
+        if($(".active").attr("id") == "asteroidNeo"){
+          let url = $("#asteroidNeo").attr("data-url");
+          //asteroidNeo data AJAX call
+          url = url + "feed?start_date=" + $("#start").val() + "&end_date="+ $("#end").val() + "&api_key=" +apiKey;
+          GetNasaApiData(url).then((data) => {
+            console.log(data);
+            data = {data};
+            jblKeysArray = getValues(data,"nasa_jpl_url");
+            nameKeysArray = getValues(data,"name");
+            obj = [];
+            for(i = 0 ;i < jblKeysArray.length; i++){
+              newItem = {
+                "name": nameKeysArray[i],
+                "jblUrl": jblKeysArray[i]
+              }
+              obj.push(newItem);
             }
-            obj.push(newItem);
-          }
-          debugger
-          var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', obj);
-          $("#topicDetails").html(topicInfoHTML);
-        }).catch((error) =>{
-          alert("something whent wrong");
-        });
+            debugger
+            var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', obj);
+            $("#topicDetails").html(topicInfoHTML);
+          }).catch((error) =>{
+            alert("something whent wrong");
+          });
+        }
+        else if($(".active").attr("id") == "donki"){
+          let url = $("#donki").attr("data-url");
+          //asteroidNeo data AJAX call
+          url = url + "startDate=" + $("#start").val() + "&endDate="+ $("#end").val() + "&api_key=" +apiKey;
+          GetNasaApiData(url).then((data) => {
+            console.log(data);
+            //data = {data};
+            // jblKeysArray = getValues(data,"nasa_jpl_url");
+            // nameKeysArray = getValues(data,"name");
+            // obj = [];
+            // for(i = 0 ;i < jblKeysArray.length; i++){
+            //   newItem = {
+            //     "name": nameKeysArray[i],
+            //     "jblUrl": jblKeysArray[i]
+            //   }
+            //   obj.push(newItem);
+            // }
+            debugger
+            var topicInfoHTML = fnHandleBars('donkiTemplate', data);
+            $("#topicDetails").html(topicInfoHTML);
+          }).catch((error) =>{
+            alert("something whent wrong");
+          });
+        }
+        
       });
 
   })();
