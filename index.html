@@ -10,7 +10,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-  <link rel="stylesheet" type="text/css" href="/Custom Css/style.css">
+  <link rel="stylesheet" type="text/css" href="/CustomCss/style.css">
 </head>
 
 <body>
@@ -83,10 +83,17 @@
       {{sub_title}}
     </div>
     <div class="topicInfo">
-      {{explanation}}  
-    </div>
-    <div>
-      <img src="{{hdurl}}" height="350px" width="100%">
+      {{explanation}} 
+      <div>
+        {{#if hdurl}}
+        <img src="{{hdurl}}" height="350px" width="100%">
+        {{/if}}
+        {{#if url}}
+        <div class="itemDetails">
+          <a href="{{url}}" target="_blank">Click here to know about {{title}}</a>
+        </div>
+        {{/if}}
+    </div> 
     </div>
   </div>
   {{/each}}
@@ -159,7 +166,7 @@
   <script src="/js/jquery.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="/Custom Js/script.js"></script>
+  <script src="/CustomJs/script.js"></script>
 </body>
 
 </html>
