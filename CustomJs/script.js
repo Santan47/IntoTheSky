@@ -76,6 +76,9 @@ function getValues(obj, key) {
         e.stopPropagation();
         $(".headerbtn").removeClass("active");
         $(this).addClass("active");
+        $("#topicDetails").addClass("hide");
+        $(".loaderParent").removeClass("hide");
+        
         let url = $(this).attr("data-url");
         
         if($(".active").attr("id") === "apod"){
@@ -86,6 +89,8 @@ function getValues(obj, key) {
            
             var topicInfoHTML = fnHandleBars('topicInfoTemplate', data);
             $("#topicDetails").html(topicInfoHTML);
+            $(".loaderParent").addClass("hide");
+            $("#topicDetails").removeClass("hide");
           }).catch((error) =>{
             alert("something whent wrong");
           });
@@ -93,6 +98,8 @@ function getValues(obj, key) {
         else if($(this).attr("id") === "asteroidNeo"){
           var filterHTML = fnHandleBars('filterTemplate', {});
           $("#topicDetails").html(filterHTML);
+          $(".loaderParent").addClass("hide");
+          $("#topicDetails").removeClass("hide");
           // var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', {});
           // $("#topicDetails").html(topicInfoHTML);
           
@@ -100,6 +107,8 @@ function getValues(obj, key) {
         else if($(this).attr("id") === "donki"){
           var filterHTML = fnHandleBars('filterTemplate', {});
           $("#topicDetails").html(filterHTML);
+          $(".loaderParent").addClass("hide");
+          $("#topicDetails").removeClass("hide");
           // var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', {});
           // $("#topicDetails").html(topicInfoHTML);
           
@@ -108,6 +117,8 @@ function getValues(obj, key) {
       });
 
       $('body').off('click', '.btnSub').on('click', '.btnSub', function (e) {
+        $("#topicDetails").addClass("hide");
+        $(".loaderParent").removeClass("hide");
         if($(".active").attr("id") == "asteroidNeo"){
           let url = $("#asteroidNeo").attr("data-url");
           //asteroidNeo data AJAX call
@@ -125,9 +136,10 @@ function getValues(obj, key) {
               }
               obj.push(newItem);
             }
-            debugger
             var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', obj);
             $("#topicDetails").html(topicInfoHTML);
+            $(".loaderParent").addClass("hide");
+            $("#topicDetails").removeClass("hide");
           }).catch((error) =>{
             alert("something whent wrong");
           });
@@ -149,9 +161,10 @@ function getValues(obj, key) {
             //   }
             //   obj.push(newItem);
             // }
-            debugger
             var topicInfoHTML = fnHandleBars('donkiTemplate', data);
             $("#topicDetails").html(topicInfoHTML);
+            $(".loaderParent").addClass("hide");
+            $("#topicDetails").removeClass("hide");
           }).catch((error) =>{
             alert("something whent wrong");
           });
