@@ -4,40 +4,53 @@
 <head>
   <title>ProjectTitle</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <!-- <meta charset="utf-8"> -->
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="/IntoTheSky/css/bootstrap.min.css">
 
   <link rel="stylesheet" type="text/css" href="/IntoTheSky/CustomCss/style.css">
 </head>
 
+<!-- <head>
+  <title>ProjectTitle</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="CustomCss/style.css">
+</head> -->
+
 <body>
   <div class="main">
-    <div class="view">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" >&times;</a>
+      <div class="innerNav">
+        <div id="apod" class="headerbtn active" data-url = "https://api.nasa.gov/planetary/apod?api_key=l6mLDfDsPCfqS75dAf6I5fnNm2fI0EbGeOtGB9dq">APOD</div>
+        <div id="asteroidNeo" class="headerbtn" data-url = "https://api.nasa.gov/neo/rest/v1/">Asteroids - NeoWs</div>
+        <div id="donki" class="headerbtn" data-url = "https://api.nasa.gov/DONKI/CME?">DONKI</div>
+        <!-- <div id="satelliteCenter" class="headerbtn">Satellite Situation Center</div>
+        <div id="ssd" class="headerbtn">SSD/CNEOS</div>
+        <div id="techport" class="headerbtn">Techport</div>
+        <div id="tleApi" class="headerbtn">TLE API</div>
+        <div id="vesta" class="headerbtn">Vesta/Moon/Mars Trek</div> -->
+        <div id="insight" class="headerbtn">InSight</div>
+        <div id="marsRover" class="headerbtn">Mars Rover</div>
+        <div id="techTransfer" class="headerbtn">TechTransfer</div>
+        <!-- <div id="earth" class="headerbtn">Earth</div>
+        <div id="eonet" class="headerbtn">EONET</div>
+        <div id="epic" class="headerbtn">EPIC</div>
+        <div id="exoplanet" class="headerbtn">Exoplanet</div>
+        <div id="genelab" class="headerbtn">GeneLab</div> -->
+      </div>
+    </div>
+    <div id="viewMain" class="view">
       <div class="imageClass">
-        <div class="header">
-          <div id="apod" class="headerbtn active" data-url = "https://api.nasa.gov/planetary/apod?api_key=l6mLDfDsPCfqS75dAf6I5fnNm2fI0EbGeOtGB9dq">APOD</div>
-          <div id="marsRover" class="headerbtn">Mars Rover</div>
-          <div id="techTransfer" class="headerbtn">TechTransfer</div>
-          <div id="satelliteCenter" class="headerbtn">Satellite Situation Center</div>
-          <div id="ssd" class="headerbtn">SSD/CNEOS</div>
-          <div id="techport" class="headerbtn">Techport</div>
-          <div id="tleApi" class="headerbtn">TLE API</div>
-          <div id="vesta" class="headerbtn">Vesta/Moon/Mars Trek</div>
-        </div>
-        <div class="header1">
-          <div id="insight" class="headerbtn">InSight</div>
-          <div id="asteroidNeo" class="headerbtn" data-url = "https://api.nasa.gov/neo/rest/v1/">Asteroids - NeoWs</div>
-          <div id="donki" class="headerbtn" data-url = "https://api.nasa.gov/DONKI/CME?">DONKI</div>
-          <div id="earth" class="headerbtn">Earth</div>
-          <div id="eonet" class="headerbtn">EONET</div>
-          <div id="epic" class="headerbtn">EPIC</div>
-          <div id="exoplanet" class="headerbtn">Exoplanet</div>
-          <div id="genelab" class="headerbtn">GeneLab</div>
-        </div>
+        <span style="font-size:30px;cursor:pointer" class="openbtn header" >&#9776;</span>
         <img src="/IntoTheSky/assets/headerImage.jpg" height="350px" width="100%" alt="Italian Trulli">
+        <!-- <img src="assets/headerImage.jpg" height="350px" width="100%" alt="Italian Trulli"> -->
         <div class="text-block">
           <h6>Space Informations!</h6>
           <div><h6>The objective of this site is to make NASA data, including imagery, eminently visible to all. Data is
@@ -166,11 +179,17 @@
   <script src="/IntoTheSky/js/popper.min.js"></script>
   <script src="/IntoTheSky/js/handlerbars.js"></script>
   <script src="/IntoTheSky/js/Chart.js"></script>
-  <!-- jQuery library -->
   <script src="/IntoTheSky/js/jquery.min.js"></script>
-  <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="/IntoTheSky/CustomJs/script.js"></script>
+
+  <!-- <script src="js/jquery-3.2.1.slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/handlerbars.js"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="CustomJs/script.js"></script> -->
 </body>
 
 </html>

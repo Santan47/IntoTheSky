@@ -33,6 +33,7 @@ border-radius: 50%;
 }
       
 .view{
+    transition: margin-left .5s;
     background: white;
 }
 
@@ -41,7 +42,7 @@ border-radius: 50%;
     opacity: 0.8;
     top: 0px;
     height: 50px;
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: space-between;
     padding-top: 5px;
@@ -69,11 +70,23 @@ border-radius: 50%;
     padding-right: 20px;
 }
 
+.innerNav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 34px;
+}
+
 .headerbtn{
-    border: 1px solid;
-    padding: 5px 10px;
+    color: white;
+    border-bottom: 1px solid;
+    padding: 11px 10px;
     border-radius: 5px;
     cursor: pointer;
+    width: 70%;
+    margin-bottom: 16px;
 }
 
 .active{
@@ -205,3 +218,49 @@ border-radius: 50%;
     align-items: center;
     height: 150px;
   }
+
+
+  /* side nav classes */
+
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+  /* end of sidevar classes */

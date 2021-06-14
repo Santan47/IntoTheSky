@@ -70,6 +70,16 @@ function getValues(obj, key) {
         alert("something whent wrong");
       });
 
+      $('body').off('click', '.closebtn').on('click', '.closebtn', function (e) {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("viewMain").style.marginLeft= "0";
+      });
+
+      $('body').off('click', '.openbtn').on('click', '.openbtn', function (e) {
+        document.getElementById("mySidenav").style.width = "350px";
+        document.getElementById("viewMain").style.marginLeft = "350px";
+      });
+
       //  change nav tab
       $('body').off('click', '.headerbtn').on('click', '.headerbtn', function (e) {
         e.preventDefault();
