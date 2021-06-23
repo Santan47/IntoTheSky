@@ -31,7 +31,15 @@ border-radius: 50%;
     font-size: 26px;
     font-weight: bolder;
 }
-      
+   
+.infoTitleFlag{
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-bottom: 35px;
+}
+
 .view{
     transition: margin-left .5s;
     background: white;
@@ -137,7 +145,7 @@ border-radius: 50%;
     bottom: 10px;
     padding: 10px 21px;
     background: blue;
-    width: 10%;
+    /* width: 10%; */
     color: white;
     cursor: pointer;
     }
@@ -157,6 +165,7 @@ border-radius: 50%;
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
+    border-radius: 5px;
   }
 
   .twoDivflex{
@@ -166,9 +175,10 @@ border-radius: 50%;
       align-items: center;
   }
 
-  .childtwoDivFlex{
-      width: 30%;
-  }
+  .childtwoDivFlex {
+    width: 30%;
+    font-weight: 600;
+}
 
   .dataset{
     height: 600px;
@@ -264,3 +274,13 @@ border-radius: 50%;
 }
 
   /* end of sidevar classes */
+
+
+  /* media query for mobile size devices */
+  @media only screen and (max-width: 600px) {
+    .childtwoDivFlex {
+      width: 160px;
+      margin: 10px;
+      font-weight: 600;
+    }
+  }

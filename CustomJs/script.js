@@ -106,7 +106,7 @@ function getValues(obj, key) {
           });
         }
         else if($(this).attr("id") === "asteroidNeo"){
-          var filterHTML = fnHandleBars('filterTemplate', {});
+          var filterHTML = fnHandleBars('filterTemplate', {data:"Please give date in span of 7 Days To Get All Asteroids Details."});
           $("#topicDetails").html(filterHTML);
           $(".loaderParent").addClass("hide");
           $("#topicDetails").removeClass("hide");
@@ -115,7 +115,7 @@ function getValues(obj, key) {
           
         }
         else if($(this).attr("id") === "donki"){
-          var filterHTML = fnHandleBars('filterTemplate', {});
+          var filterHTML = fnHandleBars('filterTemplate', {data:"Please give date in span of 7 Days To Get All Donki Details."});
           $("#topicDetails").html(filterHTML);
           $(".loaderParent").addClass("hide");
           $("#topicDetails").removeClass("hide");
