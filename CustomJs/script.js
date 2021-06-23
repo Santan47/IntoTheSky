@@ -56,10 +56,12 @@ function getValues(obj, key) {
     })
   }
 
+  function callAsteroid(){
+    $("#asteroidNeo").trigger("click");
+  }
 
   (function () {
       // for first tab call function APOD
-      $("#asteroidNeo").trigger("click");
       // GetNasaApiData($(".headerbtn.active").attr("data-url")).then((data) => {
       //   // alert("success");
       //   console.log(data);
@@ -191,6 +193,7 @@ function getValues(obj, key) {
   return {
       init: function () {
           var initialize = 1;
+          callAsteroid();
       }
   }
 }
