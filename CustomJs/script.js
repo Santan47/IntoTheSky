@@ -59,16 +59,17 @@ function getValues(obj, key) {
 
   (function () {
       // for first tab call function APOD
-      GetNasaApiData($(".headerbtn.active").attr("data-url")).then((data) => {
-        // alert("success");
-        console.log(data);
-        data["sub_title"] = "Astronomy Picture of the Day";
-        data = {data};
-        var topicInfoHTML = fnHandleBars('topicInfoTemplate', data);
-        $("#topicDetails").html(topicInfoHTML);
-      }).catch((error) =>{
-        alert("something whent wrong");
-      });
+      $("#asteroidNeo").trigger("click");
+      // GetNasaApiData($(".headerbtn.active").attr("data-url")).then((data) => {
+      //   // alert("success");
+      //   console.log(data);
+      //   data["sub_title"] = "Astronomy Picture of the Day";
+      //   data = {data};
+      //   var topicInfoHTML = fnHandleBars('topicInfoTemplate', data);
+      //   $("#topicDetails").html(topicInfoHTML);
+      // }).catch((error) =>{
+      //   alert("something whent wrong");
+      // });
 
       $('body').off('click', '.closebtn').on('click', '.closebtn', function (e) {
         document.getElementById("mySidenav").style.width = "0";
