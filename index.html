@@ -29,6 +29,7 @@
       <a href="javascript:void(0)" class="closebtn" >&times;</a>
       <div class="innerNav">
         <div id="asteroidNeo" class="headerbtn active" data-url = "https://api.nasa.gov/neo/rest/v1/">Asteroids - NeoWs</div>
+        <div id="marsRover" class="headerbtn" data-url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=">Mars Rover Gallery</div>
         <div id="donki" class="headerbtn" data-url = "https://api.nasa.gov/DONKI/CME?">DONKI</div>
         <div id="apod" class="headerbtn " data-url = "https://api.nasa.gov/planetary/apod?api_key=l6mLDfDsPCfqS75dAf6I5fnNm2fI0EbGeOtGB9dq">APOD</div>
         <!-- <div id="satelliteCenter" class="headerbtn">Satellite Situation Center</div>
@@ -37,7 +38,6 @@
         <div id="tleApi" class="headerbtn">TLE API</div>
         <div id="vesta" class="headerbtn">Vesta/Moon/Mars Trek</div> -->
         <div id="insight" class="headerbtn hide">InSight</div>
-        <div id="marsRover" class="headerbtn hide">Mars Rover</div>
         <div id="techTransfer" class="headerbtn hide">TechTransfer</div>
         <!-- <div id="earth" class="headerbtn">Earth</div>
         <div id="eonet" class="headerbtn">EONET</div>
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <footer class="footer hide">Created by Santan kr sharma.</footer>
+    <footer class="footer">Created by <p>Santan Sharma</p></footer>
   </div>
 
 
@@ -121,14 +121,17 @@
     <div class="infoTitleFlag">
       {{data}}
     </div>
+    <div class="donkyInfo">
+      {{filterDetails}}
+    </div>
     <div class="twoDivflex">
       <div class="childtwoDivFlex">
-        <div>Start Date</div>
-        <input id="start" class="pickDate" type="date">
+        <div class="hide">Start Date</div>
+        <input placeholder="Start Date" id="start" class="pickDate" type="text" onfocus="(this.type='date')">
       </div>
       <div class="childtwoDivFlex">
-        <div>End Date</div>
-        <input id="end" class="pickDate" type="date">
+        <div class="hide" >End Date</div>
+        <input placeholder="End Date" id="end" class="pickDate" type="text" onfocus="(this.type='date')">
       </div>
     </div>
     <div class="flexCenter">
@@ -141,6 +144,7 @@
 <!-- astroid neows details -->
 <script type="text/x-handlebars-template" id="asteroidNeowTemplate">
   <div style="width: 100%; text-align: center;" class="title">The details of all astroids in between the dates</div>
+  
   <div class="dataset">
   {{#each this}}
     <div class="detailsPage">
@@ -155,9 +159,10 @@
 </div>
 </script>
 
-<!-- astroid neows details -->
+<!-- Donki details -->
 <script type="text/x-handlebars-template" id="donkiTemplate">
   <div class="dataset">
+    
   {{#each this}}
     <div>
       <div class="infoTitle">
@@ -176,6 +181,100 @@
       </div>
     </div>
   {{/each}}
+</div>
+</script>
+
+<!-- Mars rover Gallery details -->
+<script type="text/x-handlebars-template" id="marsRoverGalleryTemplate">
+  <div class="dataset">
+    <div class="donkyInfo" style="margin-bottom: 0px;">
+      This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists. This API is maintained by Chris Cerami.
+Each rover has its own set of photos stored in the database, which can be queried separately. There are several possible queries that can be made against the API. Photos are organized by the sol (Martian rotation or day) on which they were taken, counting up from the rover's landing date. A photo taken on Curiosity's 1000th Martian sol exploring Mars, for example, will have a sol attribute of 1000. If instead you prefer to search by the Earth date on which a photo was taken, you can do that too.
+Along with querying by date, results can also be filtered by the camera with which it was taken and responses will be limited to 25 photos per call. Queries that should return more than 25 photos will be split onto several pages, which can be accessed by adding a 'page' param to the query.
+    </div>
+    <!-- repeat 3 blocks of photos gallery -->
+    <div style="width: 100%;">
+      <div>
+        <div>
+          <div id="content">
+            <h1 style="font-weight: bolder;">Mars Rover Gallery</h1>
+            <!-- <p >Mars Rover Gallery</p> -->
+            {{#each this}}
+            <div class="container">
+              <div class="flipper">
+                <div class="front">
+                  <img src="{{this.img_src}}" alt="cherry blossoms">
+                  <p class="caption">{{this.camera.name}}</p>
+                </div>
+                <div class="back">
+                  <a href="{{this.img_src}}" target="_blank">
+                    <h1>{{this.camera.full_name}}</h1>
+                  </a>
+                  <p class="date">{{this.earth_date}}</p>
+                  <p class="description">Id :- {{this.id}}</p>
+                  <p class="description">Rover :- {{this.rover.name}}</p>
+                  <p class="description">Rover landing date:- {{this.rover.landing_date}}</p>
+                  <p class="description">Rover launch date:- {{this.rover.launch_date}}</p>
+                  <p class="description">Rover Status:- {{this.rover.status}}</p>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          
+            <!-- <div class="container">
+              <div class="flipper">
+                <div class="front">
+                  <img src="https://images.pexels.com/photos/69776/tulips-bed-colorful-color-69776.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="white daisy">
+                  <p class="caption">Tulip</p>
+                </div>
+                <div class="back">
+                  <a href="https://en.wikipedia.org/wiki/Tulip" target="_blank">
+                    <h1>Tulip</h1>
+                  </a>
+                  <p class="date">14/07/2001</p>
+                  <p class="description">Tulips (Tulipa) form a genus of spring-blooming perennial herbaceous bulbiferous geophytes. The flowers are usually large, showy and brightly coloured, generally red, yellow, or white.</p>
+                </div>
+              </div>
+            </div>
+          
+            <div class="container">
+              <div class="flipper">
+                <div class="front">
+                  <img src="https://images.pexels.com/photos/796658/pexels-photo-796658.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="Red Purple and Yellow Tulip">
+                  <p class="caption">Lavender</p>
+                </div>
+                <div class="back">
+                  <a href="https://en.wikipedia.org/wiki/Lavandula" target="_blank">
+                    <h1>Lavender</h1>
+                  </a>
+                  <p class="date">06/08/2004</p>
+                  <p class="description">Lavandula is a genus of 47 known species of flowering plants in the mint family. The most widely cultivated species is often referred to as lavender, and there is a color named for the shade of its the flowers. </p>
+                </div>
+              </div>
+            </div> -->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- {{#each this}}
+    <div>
+      <div class="infoTitle">
+        {{catalog}}
+      </div>
+      <div class="infosubTitle">
+        {{startTime}}
+      </div>
+      <div class="topicInfo">
+        <div>
+          {{note}}
+        </div>
+        <div class="itemDetails">
+          <a href="{{link}}" target="_blank">Click here to know about {{catalog}}</a>
+        </div>
+      </div>
+    </div>
+  {{/each}} -->
 </div>
 </script>
 

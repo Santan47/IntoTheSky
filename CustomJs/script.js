@@ -56,6 +56,13 @@ function getValues(obj, key) {
     })
   }
 
+  function GetMarsRoverPhotosApi(url) {
+    return new Promise(function(resolve,reject){
+      var method = 'GET';
+      fnAjaxRequest(url, method, {},"", resolve, reject);
+    })
+  }
+
   function callAsteroid(){
     $("#asteroidNeo").trigger("click");
   }
@@ -109,7 +116,11 @@ function getValues(obj, key) {
           });
         }
         else if($(this).attr("id") === "asteroidNeo"){
-          var filterHTML = fnHandleBars('filterTemplate', {data:"Please give date in span of 7 Days To Get All Asteroids Details."});
+          var dataObj = {
+                          data:"Please give date in span of 7 Days To Get All Asteroids Details.",
+                          filterDetails:"NeoWs (Near Earth Object Web Service) is a RESTful web service for near earth Asteroid information. With NeoWs a user can: search for Asteroids based on their closest approach date to Earth, lookup a specific Asteroid with its NASA JPL small body id, as well as browse the overall data-set."
+                        }
+          var filterHTML = fnHandleBars('filterTemplate', dataObj);
           $("#topicDetails").html(filterHTML);
           $(".loaderParent").addClass("hide");
           $("#topicDetails").removeClass("hide");
@@ -118,13 +129,32 @@ function getValues(obj, key) {
           
         }
         else if($(this).attr("id") === "donki"){
-          var filterHTML = fnHandleBars('filterTemplate', {data:"Please give date in span of 7 Days To Get All Donki Details."});
+          var dataObj = {
+            data:"Please give date in span of 7 Days To Get All Asteroids Details.",
+            filterDetails:"The Space Weather Database Of Notifications, Knowledge, Information (DONKI) is a comprehensive on-line tool for space weather forecasters, scientists, and the general space science community. DONKI provides chronicles the daily interpretations of space weather observations, analysis, models, forecasts, and notifications provided by the Space Weather Research Center (SWRC), comprehensive knowledge-base search functionality to support anomaly resolution and space science research, intelligent linkages, relationships, cause-and-effects between space weather activities and comprehensive webservice API access to information stored in DONKI."
+          }
+          var filterHTML = fnHandleBars('filterTemplate',dataObj);
           $("#topicDetails").html(filterHTML);
           $(".loaderParent").addClass("hide");
           $("#topicDetails").removeClass("hide");
           // var topicInfoHTML = fnHandleBars('asteroidNeowTemplate', {});
           // $("#topicDetails").html(topicInfoHTML);
           
+        }
+        else if($(this).attr("id") === "marsRover"){
+          // var newUrl = url + apiKey;
+          var newUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY";
+          GetMarsRoverPhotosApi(newUrl).then((data) => {
+            // console.log(data);
+            // data = {data};
+           
+            var topicInfoHTML = fnHandleBars('marsRoverGalleryTemplate', data.photos);
+            $("#topicDetails").html(topicInfoHTML);
+            $(".loaderParent").addClass("hide");
+            $("#topicDetails").removeClass("hide");
+          }).catch((error) =>{
+            alert("something went wrong");
+          });
         }
 
       });

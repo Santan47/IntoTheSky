@@ -5,6 +5,7 @@ justify-content: center;
 padding-top: 20px;
 border-radius: 50%;
 } */
+@import url(https://fonts.googleapis.com/css?family=Raleway|Reenie+Beanie);
 .hide{
     display: none !important;
 }
@@ -37,7 +38,6 @@ border-radius: 50%;
   text-align: center;
   font-size: 16px;
   font-weight: bolder;
-  margin-bottom: 35px;
 }
 
 .view{
@@ -140,21 +140,30 @@ border-radius: 50%;
 
   .btnSub{
     border-radius: 5px;
-    position: absolute;
+    /* position: absolute; */
     text-align: center;
-    bottom: 10px;
+    bottom: 30px;
     padding: 10px 21px;
-    background: blue;
+    background: black;
     /* width: 10%; */
     color: white;
     cursor: pointer;
     }
 
   .footer{
-    bottom: 5px;
-    color: grey;
+    bottom: 0;
+    display: flex;
+    color: black;
     font-size: 13px;
     text-align: center;
+    /* position: fixed; */
+    padding: 6px;
+    height: 30px;
+  }
+
+  .footer p{
+    color: blue;
+    padding-left: 5px;
   }
 
   .filtersData{
@@ -173,6 +182,7 @@ border-radius: 50%;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      margin-bottom: 16px;
   }
 
   .childtwoDivFlex {
@@ -191,7 +201,7 @@ border-radius: 50%;
   .detailsPage{
     padding: 10px;
     margin-bottom: 10px;
-    width: 50%;
+    width: 60%;
     border-radius: 5px;
     box-shadow: 5px 5px #ccc;
     border: 1px solid #ccc;
@@ -209,6 +219,12 @@ border-radius: 50%;
     height: 120px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
+  }
+
+  .donkyInfo{
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 32px;
   }
   
   /* Safari */
@@ -229,6 +245,89 @@ border-radius: 50%;
     height: 150px;
   }
 
+
+
+/* photo gallery css */
+
+#content img {
+  width: 100%;
+  height: 200px;
+}
+
+#content a {
+  color: black;
+}
+
+.caption,
+h1,
+.date {
+  margin: 0;
+  text-align: center;
+}
+
+.caption,
+h1 {
+  font-family: "Reenie Beanie", sans-serif;
+  font-size: 2em;
+  padding: 10px 10px 0 10px;
+}
+
+#content .date {
+  font-size: 0.75em;
+}
+
+#content .description {
+  font-size: 12px;
+  padding: 0 20px 5px 20px;
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+#content .container {
+  perspective: 1000px;
+  display: inline-block;
+  margin: 2%;
+}
+
+#content .container:hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.container,
+.front,
+.back {
+  width: 250px;
+  height: 250px;
+}
+
+#content .flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#content .front {
+  z-index: 2;
+}
+
+#content .back {
+  transform: rotateY(180deg);
+}
+
+#content {
+  text-align: center;
+}
 
   /* side nav classes */
 
@@ -283,4 +382,14 @@ border-radius: 50%;
       margin: 10px;
       font-weight: 600;
     }
+
+    .detailsPage{
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 5px 5px #ccc;
+      border: 1px solid #ccc;
+    }
+
   }
