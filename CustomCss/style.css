@@ -375,7 +375,7 @@ h1 {
   /* end of sidevar classes */
 
 
-  /* media query for mobile size devices */
+  /* media query for mobile size devices which width in 600px */
   @media only screen and (max-width: 600px) {
     .childtwoDivFlex {
       width: 160px;
